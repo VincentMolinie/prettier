@@ -230,10 +230,7 @@ function printBinaryishExpressions(
   }
 
   const shouldInline = shouldInlineLogicalExpression(node);
-  const lineBeforeOperator =
-    (node.operator === "|>" ||
-      node.type === "NGPipeExpression" ||
-      (node.operator === "|" && options.parser === "__vue_expression")) &&
+  const lineBeforeOperator = options.operatorBeforeLine ||
     !hasLeadingOwnLineComment(options.originalText, node.right);
 
   const operator = node.type === "NGPipeExpression" ? "|" : node.operator;
